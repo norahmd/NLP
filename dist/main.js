@@ -1,1 +1,1 @@
-alert("I am here");
+(()=>{"use strict";alert("I am here")})();
