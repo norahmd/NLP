@@ -7,18 +7,21 @@ module.exports = {
     mode: 'development',
     devtool: 'source-map',
     entry: './src/client/index.js',
-    // devServer: {
-    //     contentBase: path.join(__dirname, 'dist'),
-    //     compress: true,
-    //     port: 9000
-    //   },
+    output: {
+        libraryTarget: 'var',
+        library: 'Client'
+    },
     module: {
         rules: [
                 {
             test: '/\.(js)$/',
             exclude: /node_modules/,
             use: ['babel-loader']
-                }
+                },
+                {
+                    test: /\.scss$/,
+                    use: [ 'style-loader', 'css-loader', 'sass-loader' ]
+            }
         ]
     },
     plugins: [
