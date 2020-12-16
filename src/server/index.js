@@ -1,10 +1,17 @@
+const dotenv = require('dotenv');
+dotenv.config();
 var path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
+const fetch = require('node-fetch');
 
 const app = express()
 
 app.use(express.static('dist'))
+
+const bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 console.log(__dirname)
 
@@ -20,3 +27,25 @@ app.listen(8081, function () {
 app.get('/test', function (req, res) {
     res.send(mockAPIResponse)
 })
+
+app.post('/get-analysis', function (req, res) {
+
+    getAnalysisFromApi(req.body.formText)
+    .then(function(response){
+        res.send(response)
+    })
+})
+
+const getAnalysisFromApi = async (txt)=>{
+
+    const response = await fetch(`https://api.meaningcloud.com/sentiment-2.1?key=${process.env.API_KEY}&of=json&txt=${txt}&model=general&lang=en`)
+    try{
+        const analysis = await response.json();
+        console.log(analysis)
+        return analysis
+    }catch(error){
+        console.log('error', error);
+    }
+}
+
+  console.log(`Your API key is ${process.env.API_KEY}`);
