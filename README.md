@@ -6,7 +6,7 @@ This is a simple app for natural language processing.
 
 
 ```
-git clone -- https://github.com/norahmd/NLP.git --
+git clone https://github.com/norahmd/NLP.git
 ```
 
 `cd` into your new folder and run:
