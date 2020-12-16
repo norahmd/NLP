@@ -1,10 +1,12 @@
 
-## Get Up and Running
+# NPL
+This is a simple app for natural language processing.
 
-Fork this repo, then clone your forked repo down to your computer:
+## Installation
+
 
 ```
-git clone -- git@github.com:[your-user-name]/NLP.git --
+git clone -- https://github.com/norahmd/NLP.git --
 ```
 
 `cd` into your new folder and run:
