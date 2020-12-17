@@ -11,6 +11,9 @@ module.exports = {
         libraryTarget: 'var',
         library: 'Client'
     },
+    devServer: {
+        open: true
+      },
     module: {
         rules: [
                 {
