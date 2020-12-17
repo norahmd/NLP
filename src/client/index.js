@@ -1,6 +1,6 @@
-import { checkForName } from './js/nameChecker.js'
-import { handleSubmit } from './js/formHandler.js'
-import { postDataToServer } from './js/formHandler.js'
+import { checkForName } from './js/nameChecker'
+import { handleSubmit } from './js/formHandler'
+import { postDataToServer } from './js/formHandler'
 
 import './styles/resets.scss'
 import './styles/base.scss'

@@ -13,6 +13,10 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+// Cors for cross origin allowance
+const cors = require('cors');
+app.use(cors());
+
 console.log(__dirname)
 
 app.get('/', function (req, res) {

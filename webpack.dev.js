@@ -5,27 +5,20 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
     mode: 'development',
-    devtool: 'source-map',
     entry: './src/client/index.js',
-    output: {
-        libraryTarget: 'var',
-        library: 'Client'
-    },
-    devServer: {
-        open: true
-      },
+    devtool: 'inline-source-map',
     module: {
         rules: [
-                {
-                    test: '/\.js$/',
-                    exclude: /node_modules/,
-                    loader: 'babel-loader',
-
-                },
-                {
-                    test: /\.scss$/,
-                    use: [ 'style-loader', 'css-loader', 'sass-loader' ]
-                }
+            {
+                test: '/\.js$/',
+                exclude: /node_modules/,
+                loader: "babel-loader"
+            
+            },
+            {
+                test: /\.scss$/,
+                use: [ 'style-loader', 'css-loader', 'sass-loader' ]
+            }
         ]
     },
     plugins: [
@@ -42,5 +35,20 @@ module.exports = {
             cleanStaleWebpackAssets: true,
             protectWebpackAssets: false
         })  
-    ]    
+    ],
+    output: {
+        libraryTarget: 'var',
+        library: 'Client',
+        // filename: 'bundle.js',
+        // path: path.resolve(__dirname, 'dist')
+        // publicPath: '/',
+    },
+    // watch: true,
+    // devServer: {
+    //     open: true,
+    //     // contentBase: path.join(__dirname, 'dist'),
+    //     // compress: true,
+    //     // contentBase: path.join(__dirname, 'dist'),
+    //     // publicPath: './dist'
+    //       },    
 }

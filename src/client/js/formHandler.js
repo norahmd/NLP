@@ -6,7 +6,7 @@ function handleSubmit(event) {
     Client.checkForName(formText)
 
     // console.log("::: Form Submitted :::")
-    postDataToServer('/get-analysis', {formText: formText})
+    postDataToServer('http://localhost:8081/get-analysis', {formText: formText})
     .then(res => res.json())
     .then(function(res) {
         console.log(res)

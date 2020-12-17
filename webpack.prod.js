@@ -14,7 +14,8 @@ module.exports = {
                 {
                     test: '/\.js$/',
                     exclude: /node_modules/,
-                    loader: 'babel-loader'
+                    loader: "babel-loader"
+                
                 },
                 {
                     test: /\.scss$/,
@@ -33,7 +34,6 @@ module.exports = {
     output: {
         libraryTarget: 'var',
         library: 'Client',
-        publicPath: ''
     },
     optimization: {
         minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})],
