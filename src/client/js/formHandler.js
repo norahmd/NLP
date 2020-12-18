@@ -3,15 +3,27 @@ function handleSubmit(event) {
 
     // check what text was put into the form field
     let formText = document.getElementById('name').value
-    Client.checkForName(formText)
+    if(!Client.checkForUrl(formText)){
 
-    // console.log("::: Form Submitted :::")
-    postDataToServer('http://localhost:8081/get-analysis', {formText: formText})
-    .then(res => res.json())
-    .then(function(res) {
-        console.log(res)
-        document.getElementById('results').innerHTML = res.score_tag
-    })
+        postDataToServer('http://localhost:8081/get-analysis', {formText: formText})
+        .then(res => res.json())
+        .then(function(res) {
+            console.log(res)
+            if(res.score_tag.includes('P')){
+
+                document.getElementById('results').innerHTML = `Polarity: Positive <br>subjectivity: ${res.subjectivity.toLowerCase()}`
+
+            } else if(res.score_tag.includes('N')){
+
+                document.getElementById('results').innerHTML = `Polarity: negative <br>subjectivity: ${res.subjectivity.toLowerCase()}`
+
+            } else {
+
+            }
+        })
+
+    }
+    
 }
 
 const postDataToServer = async (url='', data = {})=>{
